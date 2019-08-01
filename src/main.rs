@@ -19,9 +19,9 @@ impl fmt::Display for Item {
   fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
     match self.time.checked_sub(self.start.elapsed()) {
       Some(left) => {
-        let hours = left.as_secs() / 3200;
-        let mins = (left.as_secs() % 3200) / 60;
-        let secs = (left.as_secs() % 3200) % 60;
+        let hours = left.as_secs() / 3600;
+        let mins = (left.as_secs() % 3600) / 60;
+        let secs = (left.as_secs() % 3600) % 60;
         write!(f, "{} {:02}:{:02}:{:02}", self.message, hours, mins, secs)
       }
       _ => write!(f, "{} done", self.message),
